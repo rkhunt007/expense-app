@@ -24,10 +24,9 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server Running on ${PORT}`));
 
 
-// to make the dyno never sleep
-const min = new Date().getMinutes();
-if (min%14 == 0) {
-https.get('https://arcane-falls-70579.herokuapp.com/', (resp) => {
+setInterval(function () {
+
+    https.get('https://arcane-falls-70579.herokuapp.com/', (resp) => {
     let data = '';
 
     resp.on('data', (chunk) => {
@@ -41,4 +40,5 @@ https.get('https://arcane-falls-70579.herokuapp.com/', (resp) => {
     }).on("error", (err) => {
     console.log("Error: " + err.message);
     });
-}
+
+}, 1000*60*15)
