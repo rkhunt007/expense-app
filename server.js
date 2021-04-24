@@ -1,6 +1,8 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
+const https = require('https');
+
 
 const app = express();
 app.use(cors());
@@ -22,3 +24,21 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server Running on ${PORT}`));
 
 
+// to make the dyno never sleep
+const min = new Date().getMinutes();
+if (min%14 == 0) {
+https.get('https://arcane-falls-70579.herokuapp.com/', (resp) => {
+    let data = '';
+
+    resp.on('data', (chunk) => {
+        data += chunk;
+    });
+    
+    resp.on('end', () => {
+        console.log(data);
+    });
+
+    }).on("error", (err) => {
+    console.log("Error: " + err.message);
+    });
+}
