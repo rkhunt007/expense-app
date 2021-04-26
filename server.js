@@ -23,9 +23,9 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server Running on ${PORT}`));
 
-
+let call = 0;
 setInterval(function () {
-
+    call++;
     https.get('https://arcane-falls-70579.herokuapp.com/', (resp) => {
     let data = '';
 
@@ -34,11 +34,11 @@ setInterval(function () {
     });
     
     resp.on('end', () => {
-        console.log(data);
+        console.log(`Called ${call} time, and got ${data}`);
     });
 
     }).on("error", (err) => {
     console.log("Error: " + err.message);
     });
 
-}, 1000*60*15)
+}, 1000*60*60)
