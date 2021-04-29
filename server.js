@@ -41,4 +41,4 @@ setInterval(function () {
     console.log("Error: " + err.message);
     });
 
-}, 1000*60*30)
+}, 1000*60*15)
