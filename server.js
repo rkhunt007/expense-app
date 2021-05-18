@@ -23,22 +23,22 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server Running on ${PORT}`));
 
-let call = 0;
-setInterval(function () {
-    call++;
-    https.get('https://arcane-falls-70579.herokuapp.com/', (resp) => {
-    let data = '';
+// let call = 0;
+// setInterval(function () {
+//     call++;
+//     https.get('https://arcane-falls-70579.herokuapp.com/', (resp) => {
+//     let data = '';
 
-    resp.on('data', (chunk) => {
-        data += chunk;
-    });
+//     resp.on('data', (chunk) => {
+//         data += chunk;
+//     });
     
-    resp.on('end', () => {
-        console.log(`Called ${call} time, and got ${data}`);
-    });
+//     resp.on('end', () => {
+//         console.log(`Called ${call} time, and got ${data}`);
+//     });
 
-    }).on("error", (err) => {
-    console.log("Error: " + err.message);
-    });
+//     }).on("error", (err) => {
+//     console.log("Error: " + err.message);
+//     });
 
-}, 1000*60*15)
+// }, 1000*60*15)
