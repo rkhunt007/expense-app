@@ -1,5 +1,0 @@
-{
-    "mongoURI": "mongodb://localhost:27017/test",
-    "jwtSecret": "mysecrettoken",
-    "//mongoURI": "mongodb+srv://rahulkhunt:admin@123@cluster0.edugf.mongodb.net/expense?retryWrites=true&w=majority"
-}

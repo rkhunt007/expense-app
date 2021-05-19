@@ -49,10 +49,6 @@ router.get("/", auth, async (req, res) => {
         if (date) {
             const startOfMonth = moment(date).clone().startOf('month');
             const endOfMonth = moment(date).clone().endOf('month');
-
-            // console.log(startOfMonth);
-            // console.log(endOfMonth);
-
             incomes = await Income.find({
                 user: req.user.id,
                 date: {
